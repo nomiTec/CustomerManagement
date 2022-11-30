@@ -1,0 +1,39 @@
+.navbar{
+    background-color: brown;
+    border-style: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0 15px;
+}
+.menu{
+    float: right;
+    margin:10px 30px 10px 30px;
+}
+.menu ul{
+    line-height: 50px;
+}
+.menu ul li{
+text-decoration: none;
+list-style: none;
+float: left;
+margin-left: 20px;
+color: white;
+// background-color: aqua;
+// padding: 10px;
+}
+.brandNameDiv
+{
+    padding-top: 23px;
+}
+// .card .mat-card{
+//     margin:0;
+// }
+.img
+{
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    border: 2px solid white;
+}

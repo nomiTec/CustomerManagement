@@ -1,0 +1,70 @@
+.activeTab {
+    border: 2px solid brown;
+    width: 100%;
+     height: 0px;
+     margin: 12px;
+     border-radius: 10px;
+}
+.notActiveTab {
+    border: 2px solid #B9C0CE;
+    width: 100%; 
+    height: 0px;
+    margin: 12px;
+    border-radius: 10px;
+}
+.heading h3{
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+}
+.required:after {
+    content:" *";
+    color: red;
+  }
+  .editBtn{
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid brown;
+    font-size: 18px;
+    color: brown;
+    width: 100%;
+    margin: 10px;
+}
+.proceedBtn
+{
+    padding: 10px 20px;
+    background-color: brown;
+    border: 2px solid brown;
+    font-size: 18px;
+    color: white;
+    width: 100%;
+    margin: 10px ;
+}
+.proceedBtn .mat-icon {
+    vertical-align: sub;
+}
+.imgDiv1
+{
+    height: 100px;
+    width: 100px;
+    text-align: center;
+}
+.img1{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    padding: 2px;
+    margin-top:0;
+}
+img {
+    height: 40px;
+    margin-top: 30px;
+}
+.imgDiv
+{
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    border:1px solid gray;
+    text-align: center;
+}

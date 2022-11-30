@@ -1,0 +1,222 @@
+// ********************************************** Cutomer List*******************************************
+.searchBox
+{
+    text-align: center;
+}
+.customerDiv h3{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.btn {
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+.searchIcon{
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    right: 10px;
+    padding: 5px;
+}
+hr {
+    position: relative;
+    height: 0.5px;
+    background: black;
+    margin-top: 13px;
+}
+.custDetailDiv{
+    padding-top: 10px;
+}
+.box{
+    display: flex;
+    align-items: center;
+    padding: 6px 15px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .box > i {
+    font-size: 17px;
+    color: #000000;
+  }
+  
+  .box > input{
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #7E7E7E;
+    font-weight: 500;
+    padding-left: 10px;
+    width: 100%;
+  }
+  .activeCustomer
+  {
+      margin: 10px 0;
+      box-shadow: 0px 3px 10px #00000014;
+  }
+  .selectCutomer
+  {
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  .img
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.custDetail{
+    padding-left: 20px;
+}
+.custDetail p{
+    margin-bottom: 0;
+}
+.custName
+{
+    font-weight: 500;
+    font-size: 16px;
+}
+#sort-by{
+    color: #807c7c;margin-left:10px;
+    font-weight: bold;background: white;
+    border: 1px solid gray;border-radius: 10px;padding: 2px;font-size: 12px;
+}
+.img1{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.imgDiv1
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+img { 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    }
+
+    // Dropdown Css
+    .dropbtn {
+        background-color: white;
+        color: gray;
+        padding: 0 16px;
+        border: none;
+        font-size: 13px;font-weight: 600;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+      }
+      
+      .dropdown-content a:hover {background-color: #ddd;}
+      
+      .dropdown:hover .dropdown-content {display: block;}
+// ***************************** customer List Ends ************************************************
+// ***************************** customer Detail Sectio ************************************************
+.detailsImg{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.detailsImgDiv{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.custContactDiv p span {
+    padding-right: 7px;
+}
+
+.editDiv{
+    padding-top: 10px;
+}
+.editBtn{
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid brown;
+    font-size: 18px;
+    color: brown;
+}
+.dltBtn{
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid rgb(248, 95, 95);
+    font-size: 18px;
+    color: rgb(248, 95, 95);
+}
+.custInfoName {
+    font-weight: 500;font-size:22px
+}
+
+
+// ******************************** Personal Detail Section ******************************************************
+.personalDetailsDiv .mat-card {
+    background-color: rgb(254, 239, 248);
+    margin: 10px;
+    border-radius: 0;
+    padding: 5px 16px;
+}
+.personalDetailsDiv h3,h4{
+ font-weight: 500;
+ margin-bottom: 7px;
+}
+
+// ******************************** Personal Detail Section Ends******************************************************
+// *********************************** Address Detail Section ********************************************
+table
+    {
+        width: 100%;
+    }
+table tbody td
+    {
+        text-align: end;
+        padding: 10px 3px;
+    }
+.addressDetailDiv {
+    margin-top: 10px;
+}
+.stripesCard{
+    background-color: rgb(254, 239, 248);;
+    }
+.addressDetailDiv .mat-card{
+        padding: 10px 16px;
+        border-radius: 0;
+    }
+.addressDetailDiv h3{
+        font-weight: 500;
+    }
+    // *********************************** Address Detail Section ********************************************

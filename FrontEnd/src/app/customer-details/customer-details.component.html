@@ -1,0 +1,232 @@
+
+
+<!-- ***************************************** Customer List Section ************************************* -->
+<div fxLayout="column" fxFlex="30"   fxFlexFill  fxLayoutAlign="space-between strech">
+<mat-card style="margin:0 ;background-color: #ffffff;padding: 16px 16px 0 16px ;">
+    <!-- ***************************************** Serach Box ************************************* -->
+    <div *ngIf="searchBox">
+    <div fxFlex="70" class="customerDiv">
+        <h3>Customer</h3>
+    </div>
+     <div fxFlex="30" class="searchBox" >
+        <span class="searchIcon" (click)="showSearch()" >
+        <i class="fa fa-search" aria-hidden="true" style="vertical-align: text-top;font-size: 22px;"></i>
+        </span>
+        <span class="searchIcon" (click)="openDialog('addUser')" >
+        <i class="fa fa-plus" aria-hidden="true" style="vertical-align: text-top;font-size: 22px;padding-left: 25px;"></i>
+        </span>    
+     </div>
+    </div>
+    <div *ngIf="!searchBox">
+        <div fxFlex="25">
+            <div style="display: flex;justify-content:left">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Search By
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a (click)="searchBy('uName')">User Name</a></li>
+                          <li><a (click)="searchBy('email')">Email</a></li>
+                        </ul>
+                  </div>
+            </div>
+        </div>
+        <div fxFlex="75">
+            <form [formGroup]="searchForm" *ngIf="searchForm">
+                <div class="box">    
+                    <i class="fa fa-search" aria-hidden="true"></i>                          
+                  <input type="text" formControlName="searchtext" name="" placeholder="Search here" [(ngModel)]="searchText">             
+                    <i class="fa fa-close" aria-hidden="true" (click)="showSearch()" style="cursor: pointer;"></i>                                                      
+                </div>
+            </form>
+        </div>       
+    </div>
+    <hr>
+    <div style="display: flex;justify-content:end">
+        <div class="dropdown">
+            <button class="dropbtn"><i><i class="fa fa-sort"></i></i> Sort By  <span class="caret"></span> </button>
+            <div class="dropdown-content" >
+              <a (click)="sortData('Low')">Ascending Order</a>
+              <a (click)="sortData('High')">Descending Order</a>
+            </div>
+          </div>
+    </div>
+    <!-- ***************************************** Serach Box Ends ************************************* -->
+    
+    <!-- ***************************************** Customers List ************************************* -->
+    <div class="custDetailDiv">
+        <div *ngFor="let customer of customersList |  searchFilter:searchText:searchByType | paginate: { itemsPerPage: 6, currentPage: page }">
+            <div class="selectCutomer" *ngIf="selectedCustomer != customer.customerId" >
+             <div fxLayout="coloum" style="padding: 10px;" (click)="getCustomerDetail(customer.customerId)">
+                 <div fxflex="30">                     
+                     <div id="fileList1"  class="fileLists" class="imgDiv1" >
+                        <img [src]="customer.image" alt="Profile Image!" class="img1">       
+                    </div>
+                 </div>
+                 <div fxFlex="70" class="custDetail">
+                     <p class="custName">{{customer.userName}}</p>
+                     <p>{{customer.email}}</p>
+                 </div>
+             </div>
+            </div>
+            <div class="activeCustomer" *ngIf="selectedCustomer == customer.customerId">
+                <div fxLayout="coloum" style="padding: 10px;">
+                    <div fxflex="30">
+                        <div id="fileList1" *ngIf="imgURL != ''" class="fileLists" class="imgDiv1" >
+                            <img [src]="imgURL" alt="Profile Image!"  class="img1">       
+                        </div>
+                    </div>
+                    <div fxFlex="70" class="custDetail">
+                        <p class="custName">{{customer.userName}}</p>
+                        <p>{{customer.email}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:flex;justify-content:end">
+            <pagination-controls (pageChange)="onPageChanged($event)" class="float-right"></pagination-controls>
+        </div>
+    </div>
+</mat-card>
+</div>
+<!-- ***************************************** Customer List Section Ends************************************* -->
+
+<!-- ***************************************** Customer Detail Section ************************************* -->
+<div fxLayout="row" fxFlex="70" fxFlexFill  fxLayoutAlign="space-around strech">
+    <mat-card style="margin:16px 20px 0 20px;background-color: #ffffff;width: 100%;">
+     <div>
+         <div fxFlex="15" style="text-align: center;">
+            <div id="fileList1"  class="fileLists" class="detailsImgDiv" >
+                <img [src]="customerDetail.image" alt="Profile Image!" class="detailsImg">       
+            </div>
+         </div>
+         
+         <div fxFlex="80" class="custDetailDiv">
+             <div class="infoDisplay">
+             <div>
+                 <p class="custInfoName">{{customerDetail.userName}}</p>                        
+             </div>
+             <div class="custContactDiv">
+                <div fxFlex="25">
+                    <p>
+                        <span>
+                            <i class="fas fa-user-alt" aria-hidden="true"></i>
+                        </span>
+                        {{customerDetail.userName}}
+                    </p>
+                 </div>
+                 <div fxFlex="30" >
+                    <p>
+                        <span>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        {{customerDetail.email}}
+                    </p>
+                 </div>
+                 <div fxFlex="30">
+                    <p>
+                        <span>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </span>
+                        +91{{customerDetail.phone}}
+                    </p>
+                 </div>
+             </div>
+             <div class="editDiv">
+                 <div fxFlex="17">
+                    <button class="editBtn" (click)="openDialog('updateUser')"><i class='far fa-edit' ></i> &nbsp; Edit </button>
+                 </div>
+                 <div fxFlex="30">
+                    <button class="dltBtn" (click)="deleteCustomer(customerDetail.customerId)" ><i class='fa fa-trash'></i> &nbsp; Delete Customer </button>
+                 </div>
+             </div>
+            </div>                
+         </div>
+     </div>
+     <hr style="margin: 15px 1px;">           
+     <div class="personalDetailsDiv">
+        <div>
+            <h3>Personal Detail</h3>
+        </div>
+        <div>
+            <div fxFlex="25">
+                <mat-card>
+                    <p>First Name</p>
+                    <h4>{{customerDetail.firstName}}</h4>
+                </mat-card>
+            </div>
+            <div fxFlex="25">
+                <mat-card >
+                    <p>Last Name</p>
+                    <h4>{{customerDetail.lastName}}</h4>
+                </mat-card>
+            </div>
+            <div fxFlex="25">
+                <mat-card>
+                    <p>Gender</p>
+                    <h4>{{customerDetail.gender}}</h4>
+                </mat-card>
+            </div>
+            <div fxFlex="25">
+                <mat-card>
+                    <p>DOB</p>
+                    <h4>{{dob}}</h4>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div class="addressDetailDiv " >
+        <div>
+            <h3>Address</h3>
+        </div>
+        <div >
+                <mat-card fxLayout="row" fxFlex="50" >
+                    <table >
+                        <tbody>
+                            <tr>
+                                <th>Address Line 1</th>
+                                <td>{{customerDetail.address}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card>      
+        </div>
+        <div >
+                <mat-card class="stripesCard" fxLayout="row" fxFlex="50" >
+                    <table >
+                        <tbody>
+                            <tr>
+                                <th>Landmark</th>
+                                <td>{{customerDetail.landmark}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card> 
+            </div>
+        <div >
+            <mat-card fxLayout="row" fxFlex="50" >
+                <table >
+                    <tbody>
+                        <tr>
+                            <th>City</th>
+                            <td>{{customerDetail.city}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card>
+        </div>
+        <div >
+            <mat-card class="stripesCard" fxLayout="row" fxFlex="50" >
+                <table >
+                    <tbody>
+                        <tr>
+                            <th>State</th>
+                            <td>{{customerDetail.state}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card>
+        </div>
+    </div>
+    </mat-card>
+</div>
+<!-- ***************************************** Customer Detail Section Ends************************************* -->
